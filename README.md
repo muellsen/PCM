@@ -4,7 +4,8 @@ PCM
 
 PerspeCtive M-estimation (PCM)
 
-Authors: Patrick L. Combettes, North Carolina State University (plc@math.ncsu.edu)
+Authors: Patrick L. Combettes, North Carolina State University (plc@math.ncsu.edu),
+
          Christian L. Mueller, Simons Foundation (cmueller@flatironinstitute.org)
 
 This is the PCM MATLAB package for perspective M-estimation accompanying the paper
