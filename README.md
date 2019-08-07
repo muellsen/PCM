@@ -2,8 +2,6 @@
 PerspeCtive M-estimation (PCM) package 
 =========
 
-PerspeCtive M-estimation (PCM) 
-
 This is the PCM MATLAB package for perspective M-estimation. 
 The package introduces an optimization model for maximum likelihood-type estimation (M-estimation) 
 that generalizes a large class of known statistical models, including Huber’s concomitant M- estimation model, 
@@ -12,17 +10,24 @@ The model, termed perspective M-estimation, leverages the observation that conve
 concomitant scale as well as structured norms are instances of perspective functions. 
 
 The code developed here also builds on prior work:
+
 [1][Perspective functions: Proximal calculus and applications in high-dimensional statistics](https://www.sciencedirect.com/science/article/pii/S0022247X16308071)
 
 The accompanying papers are:
+
 [2][Perspective M-estimation via proximal decomposition](https://arxiv.org/abs/1805.06098).
 
 [3][Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications](https://arxiv.org/abs/1903.01050).
 
-Authors: Patrick L. Combettes, North Carolina State University (plc@math.ncsu.edu),
+Authors: 
+
+Patrick L. Combettes, North Carolina State University (plc@math.ncsu.edu),
+
 Christian L. Mueller, Simons Foundation (cmueller@flatironinstitute.org)
 
-Developer: Christian L. Mueller, Simons Foundation (cmueller@flatironinstitute.org)
+Developer: 
+
+Christian L. Mueller, Simons Foundation (cmueller@flatironinstitute.org)
 
 ## Installation ##
 
