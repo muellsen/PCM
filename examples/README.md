@@ -12,8 +12,7 @@ Code for reproducing Figure 2 in the main manuscript.
 
 ## LogContrastModels ##
 
-In the /examples/ folder you find several examples about the different modes of usage. 
-Please refer to the README.md in the folder for further information.
+Code for reproducing the special case of perspective log-contrast model.
 
 
 
