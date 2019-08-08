@@ -11,26 +11,25 @@ convex M-estimators with concomitant scale as well as structured norms are insta
 
 The code builds on the following papers:
 
-* [1][Perspective functions: Proximal calculus and applications in high-dimensional statistics](https://www.sciencedirect.com/science/article/pii/S0022247X16308071)
-
-* [2][Perspective M-estimation via proximal decomposition](https://arxiv.org/abs/1805.06098)
-[1] P. L. Combettes and C. L. Müller, “Perspective Maximum Likelihood-Type Estimation via Proximal Decomposition,” vol. 1, no. 919, 2018.
-
-* [3][Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications](https://arxiv.org/abs/1903.01050)
-
-Authors:
-
-* Patrick L. Combettes, North Carolina State University (plc@math.ncsu.edu),
-* Christian L. Mueller, Simons Foundation (cmueller@flatironinstitute.org)
+* [1] P. L. Combettes and C. L. Müller,[Perspective functions: Proximal calculus and applications in high-dimensional statistics](https://www.sciencedirect.com/science/article/pii/S0022247X16308071), J. Math. Anal. Appl., vol. 457, no. 2, pp. 1283–1306, 2018.
+* [2] P. L. Combettes and C. L. Müller, [Perspective M-estimation via proximal decomposition](https://arxiv.org/abs/1805.06098), arXiv, 2018.
+* [3] P. L. Combettes and C. L. Müller, [Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications](https://arxiv.org/abs/1903.01050), arXiv, 2019.
 
 Developer: 
-
-Christian L. Mueller, Simons Foundation (cmueller@flatironinstitute.org)
+* Christian L. Müller, Simons Foundation (cmueller@flatironinstitute.org)
 
 ## Installation ##
 
-The package is mostly self-contained. No external software needed. Run the addPCM.m script to include 
-the subfolders to your MATLAB path. Some of the functions for testing require an installation of cvx.
+The PCM package is self-contained. No external software needed. However, for testing the code base we rely 
+on the [cvx package](http://cvxr.com/cvx/). 
+
+After downloading the PCM package, use
+
+```MATLAB
+% This will add the folders to your MATLAB path
+addPCM
+```
+to add all subfolders to your MATLAB path.
 
 ## Basic Usage ##
 
