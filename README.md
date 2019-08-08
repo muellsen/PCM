@@ -16,7 +16,7 @@ The code builds on the following papers:
 * [3] P. L. Combettes and C. L. Müller, [Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications](https://arxiv.org/abs/1903.01050), arXiv, 2019.
 
 Developer: 
-* Christian L. Müller, Simons Foundation (cmueller@flatironinstitute.org)
+* Christian L. Müller, Center for Computational Mathematics, Flatiron Institute, Simons Foundation (cmueller@flatironinstitute.org)
 
 ## Installation ##
 
@@ -28,13 +28,19 @@ After downloading the PCM package, use
 ```MATLAB
 % This will add the folders to your MATLAB path
 addPCM
-```
-to add all subfolders to your MATLAB path.
+``` 
+to add all subfolders to your MATLAB path. The PCM package comprises several folders that contain different 
+functions. 
 
 ## Basic Usage ##
 
 In the /examples/ folder you find several examples about the different modes of usage. 
-Please refer to the README.md in the folder for further information.
+Please refer to the README.md in the folder for further information. 
+
 
 ## Extensions ##
+
+
+
+
 
