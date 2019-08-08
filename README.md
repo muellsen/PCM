@@ -14,6 +14,7 @@ The code builds on the following papers:
 * [1][Perspective functions: Proximal calculus and applications in high-dimensional statistics](https://www.sciencedirect.com/science/article/pii/S0022247X16308071)
 
 * [2][Perspective M-estimation via proximal decomposition](https://arxiv.org/abs/1805.06098)
+[1] P. L. Combettes and C. L. Müller, “Perspective Maximum Likelihood-Type Estimation via Proximal Decomposition,” vol. 1, no. 919, 2018.
 
 * [3][Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications](https://arxiv.org/abs/1903.01050)
 
