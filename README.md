@@ -9,7 +9,7 @@ the scaled Lasso, \nu-Support Vector Machine Regression, and penalized estimatio
 The model, termed perspective M-estimation, leverages the observation that a wide class of 
 convex M-estimators with concomitant scale as well as structured norms are instances of perspective functions. 
 
-The code builds on the following papers:
+The code builds on results from the following papers:
 
 * [1] P. L. Combettes and C. L. Müller,[Perspective functions: Proximal calculus and applications in high-dimensional statistics](https://www.sciencedirect.com/science/article/pii/S0022247X16308071), J. Math. Anal. Appl., vol. 457, no. 2, pp. 1283–1306, 2018.
 * [2] P. L. Combettes and C. L. Müller, [Perspective M-estimation via proximal decomposition](https://arxiv.org/abs/1805.06098), arXiv, 2018.
