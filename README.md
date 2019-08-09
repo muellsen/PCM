@@ -27,14 +27,15 @@ After downloading the PCM package, use
 
 ```MATLAB
 % This will add the folders to your MATLAB path
-addPCM
+add_pcm
 ```
 to add all subfolders to your MATLAB path. The PCM package comprises several folders that contain different
-functions.
+functions. The prox/ folder implements projection and proximity operators for several perspective functions and
+standard regularization functions and set indicators.
 
 ## Basic Usage ##
 
-The examples/ folder contains several test cases about the different modes of usage. 
+The examples/ folder contains several test cases about the different modes of usage.
 Please refer to the README.md in the folder for further information.
 
 
