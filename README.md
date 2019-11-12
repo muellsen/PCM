@@ -38,5 +38,7 @@ standard regularization functions and set indicators.
 The examples/ folder contains several test cases about the different modes of usage.
 Please refer to the README.md in the folder for further information.
 
+## Log-contrast models for compositional data - with microbiome applications ##
 
-## Extensions ##
+In examples/LogContrastModels/ we provide all examples used in [Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications].
+
