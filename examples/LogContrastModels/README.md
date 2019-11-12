@@ -20,7 +20,7 @@ soil microbiota. They reproduce the results from Section 4.2 in [[3]](https://ar
 
 ```Matlab
 % Run the perspective log-contrast model with LS and Huber on pH data
-% This script runs stability selection
+% This script runs stability selection and stores the stability profiles
 testLogContrastPHData
 % 
 % This script analyze stability selection results, does refitting, 
@@ -30,9 +30,12 @@ analyzeStabSelPHData
 This code reproduces the results in Appendix D in [[3]](https://arxiv.org/abs/1903.01050)
 ```Matlab
 % Run the perspective log-contrast model with LS and Huber on pH data
-% This script analyze stability selection results, does refitting, 
-% and plots data used in Section 4.2 in [3]
-analyzeStabSelPHData
+% This script computes the entire regularization path 
+testLogContrastPHTheo
+% 
+% This script analyze the theoretical lambda selection results,  
+% and plots data used in Appendix D in [3]
+analyzeLogContrastPHTheo
 ```
 
 ### Runtime analysis for BMI data ###
