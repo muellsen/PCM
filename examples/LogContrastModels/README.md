@@ -23,16 +23,19 @@ soil microbiota. They reproduce the results from Section 4.2 in [[3]](https://ar
 % This script runs stability selection
 testLogContrastPHData
 % 
-% This script analyze stability selection results, does refitting, and plots data used in Section 4.2 in [3]
+% This script analyze stability selection results, does refitting, 
+% and plots data used in Section 4.2 in [3]
 analyzeStabSelPHData
 ```
 This code reproduces the results in Appendix D in [[3]](https://arxiv.org/abs/1903.01050)
 ```Matlab
 % Run the perspective log-contrast model with LS and Huber on pH data
-% Use only the theoretically optimal lambda parameter on the full data and show the fits
+% Use only the theoretically optimal lambda parameter on the full data 
+% and show the fits
 testLogContrastPHData
 % 
-% This script analyze stability selection results, does refitting, and plots data used in Section 4.2 in [3]
+% This script analyze stability selection results, does refitting, 
+% and plots data used in Section 4.2 in [3]
 analyzeStabSelPHData
 ```
 
