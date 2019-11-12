@@ -10,6 +10,31 @@ We consider joint estimation of regression vectors and scales using perspective 
 
 The folder comprises code and data for reproducing the numerical experiments in [[3]](https://arxiv.org/abs/1903.01050). 
 
+### Log-contrast models for BMI prediction from gut microbiome data ###
+
+
+### Log-contrast models for pH prediction using soil microbiome data ###
+
+The subsequent scripts describe the task of prediction soil pH from the relative abundances of 
+soil microbiota. They reproduce the results from Section 4.2 in [[3]](https://arxiv.org/abs/1903.01050).
+
+```Matlab
+% Run the perspective log-contrast model with LS and Huber on pH data
+% This script runs stability selection
+testLogContrastPHData
+% 
+% This script analyze stability selection results, does refitting, and plots data used in Section 4.2 in [3]
+analyzeStabSelPHData
+```
+This code reproduces the results in Appendix D in [[3]](https://arxiv.org/abs/1903.01050)
+```Matlab
+% Run the perspective log-contrast model with LS and Huber on pH data
+% Use only the theoretically optimal lambda parameter on the full data and show the fits
+testLogContrastPHData
+% 
+% This script analyze stability selection results, does refitting, and plots data used in Section 4.2 in [3]
+analyzeStabSelPHData
+```
 
 ### Runtime analysis for BMI data ###
 
