@@ -40,5 +40,5 @@ Please refer to the README.md in the folder for further information.
 
 ## Log-contrast models for compositional data - with microbiome applications ##
 
-In examples/LogContrastModels/ we provide all examples used in [Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications].
+In examples/LogContrastModels/ we provide all numerical examples used in [Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications](https://arxiv.org/abs/1903.01050).
 
