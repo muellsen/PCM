@@ -11,6 +11,8 @@ We consider joint estimation of regression vectors and scales using perspective 
 The folder comprises code and data for reproducing the numerical experiments in [[3]](https://arxiv.org/abs/1903.01050). 
 
 
+### Runtime analysis for BMI data ###
+
 For the special case of constrained Lasso with joint scale estimation we compare the runtime of our
 provably convergent scheme with a specialized coordinate descent scheme + line search scheme, 
 proposed in [Shi et al., 2016](https://arxiv.org/abs/1603.00974). A modified version
