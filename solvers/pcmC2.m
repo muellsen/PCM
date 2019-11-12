@@ -1,11 +1,11 @@
 function [betaPCMMat, sigmaPCMMat,tauPCMMat,out] = pcmC2(Xmat, Yvec, inopts)
-% Penalized Concomitant M-estimators (Combettes and Mueller, 2018)
+% Perspective M-estimators (Combettes and Mueller, 2018,2019)
 %
-% Generic proximal solver for penalized concomitant M-estimators
+% Generic proximal solver for penalized perspective M-estimators
 % Input:  Response Yvec in R^n
 %         Data Xmat in R^nxp (n p-dimensional measurements)
 %         structure of inopts with free parameters
-% Output: PCM solutions: betaPCMMat, sigmaPCMMat,funPCMMat,out
+% Output: PCM solutions: betaPCMMat, sigmaPCMMat,tauPCMMAT,out
 
 [n, p] = size(Xmat);
 
@@ -41,14 +41,14 @@ defopts.lamPath = [];               % User input lambda values
 defopts.warmstart = 1;              % Option for warmstart over the lambda path
 
 % Options for Douglas Rachford scheme
-defopts.abstol = 1e-4;              % DR tolerance
+defopts.abstol = 1e-4;              % DR tolerance (in location), 10*abstol is used for the scale
 defopts.maxit = p*1e3;              % p*1e2 number of iteration in DR
 defopts.minit = 50;                 % minimum number of iteration in DR (used to prevent premature convergence)
 defopts.dr_mu = 1.9;                % mu in DR
 defopts.gamma = 1;                  % gamma in DR
 
 % Options for algorithm output
-defopts.plotting = 0;           % Plotting of trace
+defopts.plotting = 0;               % Plotting of optimization trace
 defopts.verbose = 0;
 
 % Merge options inopts and defopts
@@ -373,6 +373,7 @@ if lam==lamMax || ~warmstart
 end
 
 b_k_1 = randn(p,1);
+s_k_1 = randn(n,1);
 
 % Main Douglas-Rachford loop
 for kk=1:maxit
@@ -441,13 +442,17 @@ for kk=1:maxit
     % Check convergence of the location iterates
     norm_bk = sqrt(sum((abs(b_k_1)-abs(b_k)).^2));
     
+    % Check convergence of the scale iterates
+    norm_sk = sqrt(sum((abs(s_k_1)-abs(s_k)).^2));
+
     if ~mod(kk,5e3) && dropts.verbose
         disp(['Error at iteration: ',num2str(kk),': ',num2str(norm_bk)]);
     end
     
-    if (norm_bk<abstol) && (kk>minit)
+    if (norm_bk<abstol) && (norm_sk<10*abstol) && (kk>minit)
         
-        disp(['Convergence to tol= ', num2str(norm_bk), ' at iteration: ',num2str(kk)])
+        disp(['Convergence to l-tol = ', num2str(norm_bk), ' at iteration: ',num2str(kk)])
+        disp(['Convergence to s-tol = ', num2str(norm_sk), ' at iteration: ',num2str(kk)])
         break
     end
     
@@ -477,9 +482,10 @@ for kk=1:maxit
         
     end
     
-    % Store previous current b_k for convergence
+    % Store previous current b_k and s_k for convergence
     b_k_1 = b_k;
-    
+    s_k_1 = s_k;
+
     
     % Adapting mu
     %mu_k = (1-1e-3)*mu_k;
