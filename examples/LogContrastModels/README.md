@@ -16,16 +16,26 @@ The subsequent scripts describe the task of prediction body mass index (BMI) fro
 microbiota and two covariates from the COMBO dataset.
 
 The first example applies log-contrast modeling on microbiome and covariate data with standard linear constraint.
-The analysis script reproduces Figure 3 in Section 4.1 in [[3]](https://arxiv.org/abs/1903.01050). 
 ```Matlab
 % Run the perspective log-contrast model with LS and Huber on COMBO data
 % This script runs stability selection, stores the stability profiles, and compute the entire regularization path.
 testLogContrastCOMBO
-% 
+%
+```
+This analysis script reproduces Figure 3 in Section 4.1 in [[3]](https://arxiv.org/abs/1903.01050). 
+```MATLAB
 % This script analyze the regularization path selection results, does refitting, 
 % and reproduces Figure 3 in Section 4.1 in [3].
 analyzeLogContrastCOMBOTheo
 ```
+This analysis script reproduces Figure 4 in Section 4.1 in [[3]](https://arxiv.org/abs/1903.01050). 
+```MATLAB
+% This script analyze the regularization path selection results, does refitting, 
+% and reproduces Figure 4 in Section 4.1 in [3].
+analyzeStabSelCOMBO
+```
+### Log-contrast models for BMI prediction from gut microbiome data with subcompostional coherence ###
+
 
 ### Log-contrast models for pH prediction using soil microbiome data ###
 
