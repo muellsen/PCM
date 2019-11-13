@@ -18,7 +18,8 @@ microbiota and two covariates from the COMBO dataset.
 The first example applies log-contrast modeling on microbiome and covariate data with standard linear constraint.
 ```Matlab
 % Run the perspective log-contrast model with LS and Huber on COMBO data
-% This script runs stability selection, stores the stability profiles, and compute the entire regularization path.
+% This script runs stability selection, stores the stability profiles, and compute 
+% the entire regularization path.
 testLogContrastCOMBO
 %
 ```
@@ -45,6 +46,7 @@ derived from phylogeny, i.e., OTUs are grouped by phylum and subcompositionally 
 % and stores the stability profiles
 testLogContrastSubCompCOMBO
 ```
+This analysis script reproduces (approximately) Figure 5 in Section 4.1 in [[3]](https://arxiv.org/abs/1903.01050). 
 
 ```MATLAB
 % This script analyze the influence of the subcompositional constraint on stability selection
