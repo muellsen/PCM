@@ -34,8 +34,24 @@ This analysis script reproduces Figure 4 in Section 4.1 in [[3]](https://arxiv.o
 % and reproduces Figure 4 in Section 4.1 in [3].
 analyzeStabSelCOMBO
 ```
-### Log-contrast models for BMI prediction from gut microbiome data with subcompostional coherence ###
+### Log-contrast models for BMI prediction from gut microbiome data with phylogenetic coherence ###
 
+The example applies log-contrast modeling on microbiome and covariate data with subcompostional constraint,
+derived from phylogeny, i.e., OTUs are grouped by phylum and subcompositionally coherent according to that.
+
+```MATLAB
+% Run the perspective log-contrast model with LS and Huber on COMBO data.
+% This script runs stability selection with and without subcompositional constraints 
+% and stores the stability profiles
+testLogContrastSubCompCOMBO
+```
+
+```MATLAB
+% This script analyze the influence of the subcompositional constraint on stability selection
+% and reproduces (up to fluctuations from random numbers) Figure 5 in Section 4.1 in [3].
+analyzeStabSelDiffSubCompCOMBO
+
+```
 
 ### Log-contrast models for pH prediction using soil microbiome data ###
 
