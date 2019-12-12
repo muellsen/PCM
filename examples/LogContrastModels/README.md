@@ -35,10 +35,11 @@ This analysis script reproduces Figure 4 in Section 4.1 in [[3]](https://arxiv.o
 % and reproduces Figure 4 in Section 4.1 in [3].
 analyzeStabSelCOMBO
 ```
-### Log-contrast models for BMI prediction from gut microbiome data with phylogenetic coherence ###
+### Log-contrast models for BMI prediction from gut microbiome data with taxonomic coherence ###
 
 The example applies log-contrast modeling on microbiome and covariate data with subcompostional constraint,
-derived from phylogeny, i.e., OTUs are grouped by phylum and subcompositionally coherent according to that.
+derived from phylogeny, i.e., OTUs are grouped by phylum and subcompositionally coherent with respect to this
+grouping.
 
 ```MATLAB
 % Run the perspective log-contrast model with LS and Huber on COMBO data.
