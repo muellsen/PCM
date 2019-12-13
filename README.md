@@ -12,7 +12,7 @@ convex M-estimators with concomitant scale as well as structured norms are insta
 The code builds on results from the following papers:
 
 * [1] P. L. Combettes and C. L. Müller, [Perspective functions: Proximal calculus and applications in high-dimensional statistics](https://www.sciencedirect.com/science/article/pii/S0022247X16308071), J. Math. Anal. Appl., vol. 457, no. 2, pp. 1283–1306, 2018.
-* [2] P. L. Combettes and C. L. Müller, [Perspective M-estimation via proximal decomposition](https://arxiv.org/abs/1805.06098), arXiv, 2018.
+* [2] P. L. Combettes and C. L. Müller, [Perspective M-estimation via proximal decomposition](https://arxiv.org/abs/1805.06098), Electronic Journal of Statistics, to appear 2020
 * [3] P. L. Combettes and C. L. Müller, [Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications](https://arxiv.org/abs/1903.01050), arXiv, 2019.
 
 Developer:
