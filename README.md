@@ -42,3 +42,10 @@ Please refer to the README.md in the folder for further information.
 
 In examples/LogContrastModels/ we provide all numerical examples used in [Regression models for compositional data: General log-contrast formulations, proximal optimization, and microbiome data applications](https://arxiv.org/abs/1903.01050).
 
+There, we consider the special but important case of estimating a linear log-contrast model for compositional covariates X 
+where each of the n rows comprises p-dimensional compositions (or relative abundances) and n continuous outcome variables 
+Y that can also contain outliers o (in form of a (sparse) mean shift). The generative model thus reads: 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=Y=\log(X)\beta&space;&plus;&space;o&space;&plus;&space;\sigma&space;\epsilon&space;\qquad&space;\text{s.t.}\qquad&space;C^T&space;\beta&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y=\log(X)\beta&space;&plus;&space;o&space;&plus;&space;\sigma&space;\epsilon&space;\qquad&space;\text{s.t.}\qquad&space;C^T&space;\beta&space;=&space;0" title="Y=\log(X)\beta + o + \sigma \epsilon \qquad \text{s.t.}\qquad C^T \beta = 0" /></a>
+
+
