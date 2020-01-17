@@ -1,8 +1,9 @@
 Regression models for compositional data via log-contrast formulations
 =========
 
-Here, we consider the special but important case of estimating a log-contrast model for compositional covariate X
-and continuous outcomes Y that can also contain outliers o (aka the mean shift) as shown below: 
+Here, we consider the special but important case of estimating a log-contrast model for compositional covariates X 
+where each of the n rows comprises p-dimensional compositions (or relative abundances) and n continuous outcome variables 
+Y that can also contain outliers o (in form of a (sparse) mean shift). The generative model thus reads: 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=Y=\log(X)\beta&space;&plus;&space;o&space;&plus;&space;\sigma&space;\epsilon&space;\qquad&space;\text{s.t.}\qquad&space;C^T&space;\beta&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Y=\log(X)\beta&space;&plus;&space;o&space;&plus;&space;\sigma&space;\epsilon&space;\qquad&space;\text{s.t.}\qquad&space;C^T&space;\beta&space;=&space;0" title="Y=\log(X)\beta + o + \sigma \epsilon \qquad \text{s.t.}\qquad C^T \beta = 0" /></a>
 
