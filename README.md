@@ -29,15 +29,19 @@ After downloading the PCM package, use
 % This will add the folders to your MATLAB path
 add_pcm
 ```
-to add all subfolders to your MATLAB path. The PCM package comprises several folders that contain different
-functions. 
+to add all subfolders to your MATLAB path. The PCM package comprises the following folders that contain different
+functions and scripts: 
+
+- The examples/ folder contains several test cases about the different modes of usage.
+Please refer to the README.md in the folder for further information.
+
 - The prox/ folder implements projection and proximity operators for several perspective functions and
 standard regularization functions and set indicators.
 
-## Basic Usage ##
+- The solvers/ folder implements a generalized Douglas-Rachford scheme for perspective M-estimations.
 
-The examples/ folder contains several test cases about the different modes of usage.
-Please refer to the README.md in the folder for further information.
+- The sqrtlasso-solver/ folder implements solver for the SQRT-Lasso and the scaled Lasso 
+
 
 ## Log-contrast models for compositional data - with microbiome applications ##
 
