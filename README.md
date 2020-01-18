@@ -38,9 +38,10 @@ Please refer to the README.md in the folder for further information.
 - The prox/ folder implements projection and proximity operators for several perspective functions and
 standard regularization functions and set indicators.
 
-- The solvers/ folder implements a generalized Douglas-Rachford scheme for perspective M-estimations.
+- The solvers/ folder implements a generalized Douglas-Rachford scheme for perspective M-estimations. The function pcmC2.m
+is the current standard solver. 
 
-- The sqrtlasso-solver/ folder implements solver for the SQRT-Lasso and the scaled Lasso 
+- The sqrtlasso-solver/ folder implements coordinate descent solvers for the SQRT-Lasso and the scaled Lasso that solves a specific variant of the perspective M-estimation with the square-loss. 
 
 
 ## Log-contrast models for compositional data - with microbiome applications ##
