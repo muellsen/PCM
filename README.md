@@ -29,7 +29,11 @@ After downloading the PCM package, use
 % This will add the folders to your MATLAB path
 add_pcm
 ```
-to add all subfolders to your MATLAB path. The PCM package comprises the following folders that contain different
+to add all subfolders to your MATLAB path. 
+
+## Code structure ##
+
+The PCM package comprises the following folders that contain different
 functions and scripts: 
 
 - The examples/ folder contains several test cases about the different modes of usage.
