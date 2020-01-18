@@ -5,7 +5,7 @@ PerspeCtive M-estimation (PCM) package
 This is the PCM MATLAB package for perspective M-estimation.
 The package introduces an optimization model for maximum likelihood-type estimation (M-estimation)
 that generalizes a large class of known statistical models, including Huber’s concomitant M-estimation model,
-the scaled Lasso, \nu-Support Vector Machine Regression, and penalized estimation with structured sparsity.
+the scaled Lasso, \nu&-Support Vector Machine Regression, and penalized estimation with structured sparsity.
 The model, termed perspective M-estimation, leverages the observation that a wide class of
 convex M-estimators with concomitant scale as well as structured norms are instances of perspective functions.
 
