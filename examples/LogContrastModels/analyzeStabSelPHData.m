@@ -17,7 +17,7 @@ selSet2 = find(selFreq2>0.1);
 jointSet = union(selSet1,selSet2);
 setLen = length(jointSet);
 
-% Select highest resolution names for the joint set
+% Idenitfy taxonomic names at lowest available rank
 jointTaxa = correctTaxTable(jointSet,:);
 nTab = size(jointTaxa,2);
 
@@ -140,7 +140,7 @@ jointSelTop = union(selTop1,selTop2);
 [~,indTop1] = intersect(jointSelTop,selTop1);
 [~,indTop2] = intersect(jointSelTop,selTop2);
 
-% Idenitfy taxonomic names at order level
+% Idenitfy taxonomic names at lowest available rank
 topTaxa = correctTaxTable(jointSelTop,:);
 
 setLen=size(topTaxa,1);
