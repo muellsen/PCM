@@ -47,6 +47,8 @@ is the current standard solver.
 
 - The sqrtlasso-solver/ folder implements coordinate descent solvers for the SQRT-Lasso and the scaled Lasso that solves a specific variant of the perspective M-estimation with the square-loss. 
 
+- The misc/ folder comprises several helper routines and functions for data transformation and analysis.
+
 
 ## Log-contrast models for compositional data - with microbiome applications ##
 
