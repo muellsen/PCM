@@ -4,7 +4,7 @@
 % Log-contrast modeling for soil pH/microbiome data
 %
 % Analyze stability selection + refitting for Huber and LS model
-% 
+%
 % Reproduces (up to variation in stability selection) Section 4.2 in
 % Combettes & Mueller, 2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,14 +17,19 @@ selSet2 = find(selFreq2>0.1);
 jointSet = union(selSet1,selSet2);
 setLen = length(jointSet);
 
-% Select order names for the joint set
-jointTaxa = correctTaxTable(jointSet,5)
+% Select highest resolution names for the joint set
+jointTaxa = correctTaxTable(jointSet,:);
+nTab = size(jointTaxa,2);
+
 jointTaxaLabels = cell(setLen,1);
 for i=1:setLen
-    temp = strsplit(char(jointTaxa.order(i)),'__')
-    jointTaxaLabels{i} = temp{2};
-    if isempty(temp{2})
-        jointTaxaLabels{i} = 'unknown'
+    for j=nTab-1:-1:2
+        currEntry = table2array(jointTaxa(i,j));
+        temp = strsplit(char(currEntry),'__')
+        if ~isempty(temp{2})
+            jointTaxaLabels{i} = temp{2};
+            break;
+        end
     end
 end
 
@@ -42,11 +47,11 @@ box on
 xtickangle(90)
 xlim([0.25 setLen+0.5])
 
-% Threshold 
+% Threshold
 th_stab = 0.7;
 
-selTop1 = find(selFreq1>=th_stab) 
-selTop2 = find(selFreq2>=th_stab) 
+selTop1 = find(selFreq1>=th_stab)
+selTop2 = find(selFreq2>=th_stab)
 
 % Reoptimize over the subset
 X_sel1 = X(:,selTop1);
@@ -67,9 +72,6 @@ lam0 = sqrt(2/n)*norminv(1-kk/p);
 Ceq = ones(1,p); % Standard log-constrast constraint
 rhsvec = zeros(size(Ceq,1),1);
 
-% Generate betaTrue that satsifies the constraints
-PCeq = Ceq'*pinv(Ceq*Ceq');
-
 % Algorithmic parameters
 clear pcmopts;
 
@@ -87,7 +89,7 @@ pcmopts.regFun = regFun;
 pcmopts.Ceq = Ceq;
 pcmopts.rhsvec = rhsvec;
 
-pcmopts.abstol = 1e-5;
+pcmopts.abstol = 1e-7;
 pcmopts.lamPath = 0;% no penalty;
 pcmopts.gamma = 1;
 
@@ -103,9 +105,6 @@ X_sel2 = X(:,selTop2);
 % Linear constraint for log-contrast model
 Ceq = ones(1,p); % Standard log-constrast constraint
 rhsvec = zeros(size(Ceq,1),1);
-
-% Generate betaTrue that satsifies the constraints
-PCeq = Ceq'*pinv(Ceq*Ceq');
 
 % Optimization model
 % Algorithmic parameters
@@ -125,7 +124,7 @@ pcmopts.regFun = regFun;
 pcmopts.Ceq = Ceq;
 pcmopts.rhsvec = rhsvec;
 
-pcmopts.abstol = 1e-5;
+pcmopts.abstol = 1e-7;
 pcmopts.lamPath = 0;% no penalty
 pcmopts.gamma = 1;
 
@@ -141,15 +140,21 @@ jointSelTop = union(selTop1,selTop2);
 [~,indTop1] = intersect(jointSelTop,selTop1);
 [~,indTop2] = intersect(jointSelTop,selTop2);
 
-% Idenitfy taxonomic names at order level 
-topNames = cellstr(correctTaxTable{jointSelTop,5});
+% Idenitfy taxonomic names at order level
+topTaxa = correctTaxTable(jointSelTop,:);
 
-s=length(topNames);
+setLen=size(topTaxa,1);
 
-% Remove o_ prefix
-for i=1:s
-    temp = strsplit(topNames{i},'_');
-    topNames{i} = temp{2};
+topLabels = cell(setLen,1);
+for i=1:setLen
+    for j=nTab-1:-1:2
+        currEntry = table2array(topTaxa(i,j));
+        temp = strsplit(char(currEntry),'__')
+        if ~isempty(temp{2})
+            topLabels{i} = temp{2};
+            break;
+        end
+    end
 end
 
 % Insert by hand (deprecated)
@@ -164,11 +169,11 @@ legend('LS','Huber','Location','NorthWest')
 grid on
 ylabel('\beta_i','FontSize',40)
 set(gca,'FontSize',20)
-set(gca,'XTick',(1:s))
-set(gca,'XTickLabel',topNames,'fontsize',18)
+set(gca,'XTick',(1:setLen))
+set(gca,'XTickLabel',topLabels,'fontsize',18)
 box on
 xtickangle(90)
-xlim([0.5 p+0.5])
+xlim([0.5 setLen+0.5])
 ylim([-0.4 0.4])
 
 % Analyze Huber model refit
@@ -207,7 +212,7 @@ LS_all = sqrt(sum(res.^2)/length(res));
 LS_in = sqrt(sum((res(quadInds).^2)/length(quadInds)));
 LS_out = sqrt(sum((res(linInds).^2))/length(linInds));
 
-% R^2 
+% R^2
 R2 = (corr(Y_cent,X_sel1*currBeta(:,currInd))).^2
 
 % Analyze LS model refit
@@ -227,7 +232,7 @@ MAD_all2 = mean(abs(res2));
 % LS deviation
 LS_all2 = sqrt(sum(res2.^2)/length(res2));
 
-% R^2 
+% R^2
 R2_2 = (corr(Y_cent,X_sel2*currBeta(:,currInd))).^2
 
 
