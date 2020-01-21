@@ -45,9 +45,9 @@ PredLabels = [GeneraPhylo(:,7);'Calorie';'Fat'];
 [pG,nG] = size(GeneraCounts);
 
 % Count data of 87 genera 
-Xunorm = GeneraCounts;% + rand(pG,nG);
+Xunorm = GeneraCounts;
 
-% CLR transform data
+% CLR transform data with pseudo count of 0.5
 X0 = clr(Xunorm,1/2)';
 
 % Joint microbiome and covariate data and offset
