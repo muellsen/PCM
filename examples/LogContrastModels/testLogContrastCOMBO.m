@@ -18,6 +18,7 @@ load('data/CaloriData.csv')
 load('data/FatData.csv')
 load('data/BMI.csv')
 load('data/GeneraFilteredCounts.csv')
+load('data/GeneraCounts.csv')
 load('data/CFiltered.mat')
 
 Ceq45 = table2array(CFiltered(1:end,2:5));
