@@ -23,6 +23,7 @@ ylim([-0.6 0.6])
 set(gca,'FontSize',20)
 hold on
 plot(lam0,betaPCM1Mat,'k*','MarkerSize',5)
+title('Huber path')
 
 figure;
 plot(outPCM2path.lamPath/n,betaPCM2Matpath,'LineWidth',3)
@@ -33,10 +34,11 @@ ylabel('\beta_i')
 ylim([-0.6 0.6])
 set(gca,'FontSize',20)
 hold on
-plot(lam0,betaPCM2Mat(1:p),'k*','MarkerSize',5)
+plot(lam0,betaPCM2Mat,'k*','MarkerSize',5)
+title('LS path')
 
 figure;
-plot(outPCM2path.lamPath/n,mean(sigmaPCM2Matpath/2),'LineWidth',3)
+plot(outPCM2path.lamPath/n,mean(sigmaPCM2Matpath),'LineWidth',3)
 grid on
 box on
 hold on
@@ -59,7 +61,7 @@ setLen = length(jointSet);
 % Taxa labels
 
 % Select order names for the joint set
-jointTaxa = correctTaxTable(jointSet,5)
+jointTaxa = tax_table(jointSet,5)
 jointTaxaLabels = cell(setLen,1);
 for i=1:setLen
     temp = strsplit(char(jointTaxa.order(i)),'__')

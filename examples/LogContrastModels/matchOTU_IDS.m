@@ -23,11 +23,12 @@ OTU_IDS = [1124701 697997  203969  205391  843189  3431064 156611 ...
 load('data/logX_pHdata.mat');
 load('data/taxTablepHData.mat');
 load('data/pHData.mat')
+
 [n,p] = size(X);
 
 % Assign OTU IDs to X data from the split data
 
-%% Check first that X and logX_pHData are identical; checked!!
+%% Check first that columns of X and logX_pHData have the same elements; checked!!
 % matchIDs = zeros(p,1);
 % 
 % for i=1:p
@@ -35,7 +36,8 @@ load('data/pHData.mat')
 %     matchIDs(i) = find(abs(sum(logX_pHdata-currX))<1e-3)
 % end
     
-%% Find ordering of the labels
+%% Find ordering of the OTUs
+
 permIDs = zeros(p,1);
 
 for i=1:p

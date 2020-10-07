@@ -14,17 +14,17 @@
 rng(2342)
 
 % load all csv files
-load('data/CaloriData.csv')
-load('data/FatData.csv')
-load('data/BMI.csv')
-load('data/GeneraFilteredCounts.csv')
-load('data/GeneraCounts.csv')
-load('data/CFiltered.mat')
+load('data/COMBO/CaloriData.csv')
+load('data/COMBO/FatData.csv')
+load('data/COMBO/BMI.csv')
+load('data/COMBO/GeneraFilteredCounts.csv')
+load('data/COMBO/GeneraCounts.csv')
+load('data/COMBO/CFiltered.mat')
 
 Ceq45 = table2array(CFiltered(1:end,2:5));
 
 % load phylogenetic tree
-load('data/GeneraPhylo.mat')
+load('data/COMBO/GeneraPhylo.mat')
 
 % BMI data (n=96)
 Yunorm = BMI;

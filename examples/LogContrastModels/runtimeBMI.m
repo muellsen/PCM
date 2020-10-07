@@ -29,8 +29,12 @@ loc_x = mean(x);
 sca_x = std(x);
 b2 = 1./sca_x;
 diagB = diag(b2);
-x_c = (x - ones(n,1)*loc_x)*diagB;
-x_cent = x_c;
+x_cent = (x - ones(n,1)*loc_x)*diagB;
+
+%x2 = clr(x_c,0)';
+%x_cent = x2;
+
+x3 = clr(FiltSpeciesCntData,1)';
 
 % constr: linear constraint, for compositional data, 
 % here groups of four phyla (CFiltered is a px4 matrix)
@@ -145,9 +149,8 @@ set(ax,'FontSize',20);
 title('Difference in solutions across \lambda-path','FontSize',15)
 
 figure;
-plot(outPCM.lamPath,betaConLMat,'LineWidth',3)
+plot(outConL.lamPath,betaConLMat,'LineWidth',3)
 ax = gca;
-ax.XTick =  [1:nFiltSpecies];
 set(ax,'FontSize',20);
 xlabel('Regularization path \lambda')
 grid on

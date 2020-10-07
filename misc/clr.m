@@ -19,7 +19,7 @@ sumData = sum(data);
 if sum(sumData(:)>1)>0
     
     % Add pseudo count 
-    data = data+pscnt;
+    data(find(data==0))=pscnt;
 
     % Normalize by the sum
     temp = data./repmat(sumData,p,1);

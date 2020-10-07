@@ -18,12 +18,12 @@ jointSet = union(selSet1,selSet2);
 setLen = length(jointSet);
 
 % Idenitfy taxonomic names at lowest available rank
-jointTaxa = correctTaxTable(jointSet,:);
+jointTaxa = tax_table(jointSet,:);
 nTab = size(jointTaxa,2);
 
 jointTaxaLabels = cell(setLen,1);
 for i=1:setLen
-    for j=nTab-1:-1:2
+    for j=nTab:-1:2
         currEntry = table2array(jointTaxa(i,j));
         temp = strsplit(char(currEntry),'__')
         if ~isempty(temp{2})
@@ -141,13 +141,13 @@ jointSelTop = union(selTop1,selTop2);
 [~,indTop2] = intersect(jointSelTop,selTop2);
 
 % Idenitfy taxonomic names at lowest available rank
-topTaxa = correctTaxTable(jointSelTop,:);
+topTaxa = tax_table(jointSelTop,:);
 
 setLen=size(topTaxa,1);
 
 topLabels = cell(setLen,1);
 for i=1:setLen
-    for j=nTab-1:-1:2
+    for j=nTab:-1:2
         currEntry = table2array(topTaxa(i,j));
         temp = strsplit(char(currEntry),'__')
         if ~isempty(temp{2})

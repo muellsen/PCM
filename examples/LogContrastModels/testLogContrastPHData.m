@@ -9,26 +9,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Set random number seed (for reproducibility)
-% This influences the results slightly 
-% due to the randomnes in stability selection
-
 rng(2342)
 
-% Load pH data Y and microbiome data X (already log-transformed)
-load('data/pHData.mat')
-[n,p] = size(X);
+% Load pH data Y and microbiome count data X_count
+load('data/pHSoilData/pHSoilData.mat')
 
-% Match OTUs from Morton et al. and own analysis
-matchOTU_IDS;
+% X_count comprises the predictor matrix as [nxp] matrix
+[n,p] = size(X_count);
+
+% Count data of 116 genera transformed into pxn matrix
+Xunorm = X_count';
+
+% CLR transform data with pseudo count of 0.5
+X = clr(Xunorm,0.5)';
        
 % Center Y
 y_bar = mean(Y);
 Y_cent = Y-y_bar;
-
-% Theoretical lambda for model selection
-options = optimset('Display','off');
-kk = fsolve(@(k) (norminv(1-k/p))^4 + 2*((norminv(1-k/p))^2) - k, p/2, options);
-lam0 = sqrt(2/n)*norminv(1-kk/p);
 
 % Linear constraint for log-contrast model
 Ceq = ones(1,p); % Standard log-constrast constraint
@@ -58,7 +55,7 @@ pcmopts.rhsvec = rhsvec;
 
 pcmopts.abstol = 1e-5;
 pcmopts.lamPath = n*lam0;
-pcmopts.gamma = 1;
+pcmopts.gamma = 0.1;
 
 % Model selection with theoretical lambda
 t1=now;
@@ -88,6 +85,7 @@ objFun2 = 'Lq';
 
 pcmopts.objFun = objFun2;
 pcmopts.lamPath = n*lam0;
+pcmopts.gamma = 1;
 
 % Model selection with theoretical lambda
 t1=now;

@@ -9,28 +9,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Set random number seed (for reproducibility)
-% This influences the results slightly 
-% due to the randomnes in stability selection
-
 rng(2342)
 
-% Load pH data Y and microbiome data X (already log-transformed)
-load('data/pHData.mat')
-[n,p] = size(X);
+% Load pH data Y and microbiome count data X_count
+load('data/pHSoilData/pHSoilData.mat')
+% load('data/pHSoilData/deprecated/pHDataOld.mat')
 
-% Match OTUs from Morton et al. and own analysis
-matchOTU_IDS;
+% X_count comprises the predictor matrix as [nxp] matrix
+[n,p] = size(X_count);
+
+% Count data of 116 genera transformed into pxn matrix
+Xunorm = X_count';
+
+% CLR transform data with pseudo count of 0.5
+X = clr(Xunorm,1/2)';
        
-% Center X and Y
+% Center Y
 y_bar = mean(Y);
 Y_cent = Y-y_bar;
-
-loc_x = mean(X);
-sca_X = std(X);
-b2 = 1./sca_X;
-diagB = diag(b2);
-X_c = (X - ones(n,1)*loc_x)*diagB;
-X_cent = X_c;
 
 % Theoretical lambda
 options = optimset('Display','off');
@@ -63,24 +59,26 @@ pcmopts.rhsvec = rhsvec;
 
 pcmopts.abstol = 1e-6;
 pcmopts.lamPath = n*lam0;
-pcmopts.gamma = 1;
+pcmopts.gamma = 0.1;
 
 t1=now;
-[betaPCM1Mat, sigmaPCM1Mat,funPCM1Mat,outPCM1] = pcmC2(X_cent, Y_cent, pcmopts);
+[betaPCM1Mat, sigmaPCM1Mat,funPCM1Mat,outPCM1] = pcmC2(X, Y_cent, pcmopts);
 t2=now;
 timePCM1 = (t2-t1)*(60*60*24)
 
+
 % Contraints + no robustness
 objFun2 = 'Lq';
-
+pcmopts.fitLin = 1/2;
 pcmopts.objFun = objFun2;
 pcmopts.lamPath = n*lam0;
+pcmopts.gamma = 0.6;
+pcmopts.verbose = 1;
 
 t1=now;
-[betaPCM2Mat, sigmaPCM2Mat,funPCM2Mat,outPCM2] = pcmC2(X_cent, Y_cent, pcmopts);
+[betaPCM2Mat, sigmaPCM2Mat,funPCM2Mat,outPCM2] = pcmC2(X, Y_cent, pcmopts);
 t2=now;
 timePCM2 = (t2-t1)*(60*60*24)
-
 
 % Compute the entire solution path on all data for reference
 clear pcmopts
@@ -101,20 +99,22 @@ pcmopts.rhsvec = rhsvec;
 pcmopts.lenPath = 40;
 
 pcmopts.abstol = 1e-6;
-pcmopts.gamma = 1;
+pcmopts.gamma = 0.5;
+pcmopts.verbose =1
 
 t1=now;
-[betaPCM1Matpath, sigmaPCM1Matpath,funPCM1Matpath,outPCM1path] = pcmC2(X_cent, Y_cent, pcmopts);
+[betaPCM1Matpath, sigmaPCM1Matpath,funPCM1Matpath,outPCM1path] = pcmC2(X, Y_cent, pcmopts);
 t2=now;
-timePCM1 = (t2-t1)*(60*60*24)
+timePCM1path = (t2-t1)*(60*60*24)
 
 % L2 
 objFun2 = 'Lq';
-
 pcmopts.objFun = objFun2;
+pcmopts.gamma = 2;
+pcmopts.verbose =1
 
 t1=now;
-[betaPCM2Matpath, sigmaPCM2Matpath,funPCM2Matpath,outPCM2path] = pcmC2(X_cent, Y_cent, pcmopts);
+[betaPCM2Matpath, sigmaPCM2Matpath,funPCM2Matpath,outPCM2path] = pcmC2(X, Y_cent, pcmopts);
 t2=now;
-timePCM2 = (t2-t1)*(60*60*24)
+timePCM2path = (t2-t1)*(60*60*24)
 
